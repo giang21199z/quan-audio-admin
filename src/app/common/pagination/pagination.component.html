@@ -1,0 +1,13 @@
+<ng-container *ngIf="pagination">
+    <div class="pagination-area">
+        <ul class="pagination">
+            <li class="cursor-pointer" *ngIf="pagination.pageNum > 0"><a (click)="pageChangeListener(0)"><i class="fa fa-angle-double-left"></i></a></li>
+            <li class="cursor-pointer" *ngIf="pagination.pageNum - 2 >= 0"><a (click)="pageChangeListener(pagination.pageNum - 2)">{{+pagination.pageNum - 1}}</a></li>
+            <li class="cursor-pointer" *ngIf="pagination.pageNum - 1 >= 0"><a (click)="pageChangeListener(pagination.pageNum - 1)">{{+pagination.pageNum}}</a></li>
+            <li class="cursor-pointer" *ngIf="pagination.pageNum >= 0"><a class="active">{{+pagination.pageNum + 1}}</a></li>
+            <li class="cursor-pointer" *ngIf="pagination.pageNum + 1 < pagination.totalPage - 1"><a (click)="pageChangeListener(pagination.pageNum + 1)">{{+pagination.pageNum + 2}}</a></li>
+            <li class="cursor-pointer" *ngIf="pagination.pageNum + 2 < pagination.totalPage - 1"><a (click)="pageChangeListener(pagination.pageNum + 2)">{{+pagination.pageNum + 3}}</a></li>
+            <li class="cursor-pointer" *ngIf="pagination.pageNum < pagination.totalPage - 1"><a (click)="pageChangeListener(pagination.totalPage - 1)"><i class="fa fa-angle-double-right"></i></a></li>
+        </ul>
+    </div>
+</ng-container>

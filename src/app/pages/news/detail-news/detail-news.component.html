@@ -4,56 +4,40 @@
 
     <div class="wraper container-fluid">
         <!-- <div class="page-title">
-            <h3 class="title">Thêm mới </h3>
-        </div> -->
+          <h3 class="title">Thêm mới </h3>
+      </div> -->
 
         <div class="row">
             <!-- Basic example -->
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <!-- <div class="panel-heading">
-                        <h3 class="panel-title">Thêm mới </h3>
-                    </div> -->
+                      <h3 class="panel-title">Thêm mới </h3>
+                  </div> -->
                     <div class="panel-body">
                         <form class="form-horizontal" role="form">
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Tên </label>
+                                <label class="col-md-4 control-label">Tiêu đề </label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="name" placeholder="Nhập tên" [(ngModel)]="audio.name">
+                                    <input type="text" class="form-control" name="title" placeholder="Nhập tên" [(ngModel)]="news.title">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Giá </label>
+                                <label class="col-md-4 control-label">Miêu tả ngắn </label>
                                 <div class="col-md-8">
-                                    <input type="number" class="form-control" name="price" placeholder="Nhập giá" [(ngModel)]="audio.price">
+                                    <input type="text" class="form-control" name="description" placeholder="Nhập miêu tả" [(ngModel)]="news.description">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">Thương hiệu</label>
+                            <div class="form-group" *ngIf="news.idnews === -1">
+                                <label class="col-md-4 control-label">Loại </label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="brand" placeholder="Nhập thương hiệu" [(ngModel)]="audio.brand">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">Khuyến mại </label>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" name="sale" placeholder="Khuyến mại" [(ngModel)]="audio.sale">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">Thuộc danh mục</label>
-                                <div class="col-md-8">
-                                    <select class="form-control" name="category" [(ngModel)]="audio.idtype">
-                                        <option
-                                        [ngValue]="category"
-                                        *ngFor="let category of category; let idx = index"
-                                        [selected]="audio.idtype === category.id">
+                                    <select class="form-control" name="category" [(ngModel)]="news.category">
+                                        <option [ngValue]="category" *ngFor="let category of categorires; let idx = index">
                                             {{category.name}}
                                         </option>
                                     </select>
                                 </div>
                             </div>
-
                         </form>
                     </div>
                     <!-- panel-body -->
@@ -64,7 +48,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <form class="form-horizontal" role="form">
-                            <div class="form-group" *ngIf="audio.idaudio === -1">
+                            <div class="form-group" *ngIf="news.idnews === -1">
                                 <label class="col-md-4 control-label">Ảnh đại diện</label>
                                 <div class="col-md-8">
                                     <image-upload [url]="'http://release.quanaudio.vn'" [max]="1" (uploadFinished)="onUploadFinished($event)"></image-upload>
@@ -84,25 +68,25 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <!-- <div class="panel-heading">
-                            <h3 class="panel-title">Thêm mới </h3>
-                        </div> -->
+                          <h3 class="panel-title">Thêm mới </h3>
+                      </div> -->
                     <div class="panel-body">
                         <form class="form-horizontal" role="form">
                             <div class="form-group">
-                                <label class="col-md-12 control-label">Miêu tả </label>
+                                <label class="col-md-12 control-label">Nội dung bài viết </label>
                                 <div class="col-md-12">
                                     <!-- <input type="text" class="form-control" value="Some text value..."> -->
-                                    <div [froalaEditor]="options" [(froalaModel)]="audio.description">hi</div>
+                                    <div [froalaEditor]="options" [(froalaModel)]="news.content">hi</div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12">
-                                    <button class="btn btn-success m-b-5" (click)="updateProduct()">
-                                            Lưu
-                                    </button>
-                                    <a class="btn btn-info m-b-5" [routerLink]="['/danh-sach-san-pham']">
-                                        Danh sách sản phẩm
-                                    </a>
+                                    <button class="btn btn-success m-b-5" (click)="updateNews()">
+                                          Lưu
+                                  </button>
+                                    <a class="btn btn-info m-b-5" [routerLink]="['/danh-sach-tin-tuc']">
+                                      Danh sách tin tuc
+                                  </a>
                                 </div>
                             </div>
                         </form>

@@ -4,8 +4,14 @@
     <!-- Navbar -->
     <nav class="navigation">
         <ul class="list-unstyled">
-            <li class="active">
-                <a href="#"><i class="ion-home"></i> <span class="nav-label">Create Audio</span></a>
+            <li>
+                <a [routerLink]="['/danh-sach-san-pham']"><i class="ion-home"></i> <span class="nav-label">Quản lý sản phẩm</span></a>
+            </li>
+            <li>
+                <a [routerLink]="['/danh-sach-tin-tuc']"><i class="fa fa-newspaper-o"></i> <span class="nav-label">Quản lý tin tức</span></a>
+            </li>
+            <li>
+                <a [routerLink]="['/danh-sach-slides']"><i class="fa fa-sliders"></i> <span class="nav-label">Quản lý slide</span></a>
             </li>
         </ul>
     </nav>

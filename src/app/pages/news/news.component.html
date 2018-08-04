@@ -1,0 +1,68 @@
+<section class="content">
+    <div class="wraper container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <div class="box-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <a type="button" class="btn btn-block btn-success" [routerLink]="['/tin-tuc', -1]">Thêm mới</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tr>
+                                <th>Tiêu đề</th>
+                                <th>Loại bài viết</th>
+                                <th>Hành động</th>
+                            </tr>
+                            <tr>
+                                <th><input class="form-control" type="text" [(ngModel)]="keyword" name="keyword"></th>
+                                <th>
+                                    <select class="form-control" [(ngModel)]="category" name="category" (change)="changeCategory($event)">
+                                        <option selected value="TINTUC">Tin tức</option>
+                                        <option value="CTHT">Công trình hoàn thành</option>
+                                    </select>
+                                </th>
+                                <th><input class="btn btn-primary" type="button" value="Tìm kiếm" (click)="search()"></th>
+                            </tr>
+                            <tr *ngIf="!news || (news && news.length === 0)">
+                                <td colspan="3" class="text-center">
+                                    Không có dữ liệu
+                                </td>
+                            </tr>
+                            <tr *ngFor="let data of news">
+                                <td>{{data.title}}</td>
+                                <td>
+                                    <ng-container *ngIf="category === 'CTHT'">
+                                        Công trình hoàn thành
+                                    </ng-container>
+                                    <ng-container *ngIf="category === 'TINTUC'">
+                                        Tin tức
+                                    </ng-container>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn btn-block btn-info" [routerLink]="['/tin-tuc', data.idnews]">Chi tiết</a>
+                                    <button type="button" class="btn btn-block btn-danger" (click)="deleteNews(data)">Xóa</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                    <!-- <div class="box-footer clearfix">
+                      <ul class="pagination pagination-sm no-margin pull-right">
+                          <li><a href="#">&laquo;</a></li>
+                          <li><a href="#">1</a></li>
+                          <li><a href="#">2</a></li>
+                          <li><a href="#">3</a></li>
+                          <li><a href="#">&raquo;</a></li>
+                      </ul>
+                  </div> -->
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+    </div>
+</section>
